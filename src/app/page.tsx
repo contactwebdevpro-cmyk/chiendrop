@@ -1,4 +1,4 @@
-import { site, product, priceLabel, benefits, steps, specs, faqs, reviews } from "@/config/site";
+import { site, product, priceLabel, steps, specs, faqs, reviews, features, heroPoints, trustItems } from "@/config/site";
 import BuyButton from "@/components/BuyButton";
 import Gallery from "@/components/Gallery";
 import Pic from "@/components/Pic";
@@ -19,6 +19,7 @@ export default function Home() {
   return (
     <>
       <a href="#contenu" className="skip">Aller au contenu</a>
+      <div className="announce"><span>Produit neuf</span><span>Paiement sécurisé sur eBay</span><span>Recharge USB</span></div>
       <header className="top">
         <div className="wrap top-in">
           <a href="#" className="logo" aria-label={`${site.brand}, accueil`}>
@@ -35,14 +36,16 @@ export default function Home() {
       <main id="contenu">
         <section className="hero wrap">
           <div className="hero-copy">
-            <p className="kicker">{site.tagline}</p>
-            <h1>La brosse qui calme le poil, à la vapeur.</h1>
-            <p className="lead">
-              {product.description} Elle aide à retirer les poils détachés et à réduire l&apos;électricité statique pendant le brossage.
-            </p>
+            <p className="kicker">Des poils partout, un pelage qui s&apos;électrise, une brosse que l&apos;animal évite ?</p>
+            <h1>Brossez à la vapeur, laissez les poils détachés sur la brosse.</h1>
+            <p className="lead">Brosse à vapeur rechargeable pour chien et chat, avec réservoir d&apos;eau intégré et poignée ergonomique.</p>
+            <ul className="points">
+              {heroPoints.map((t) => (<li key={t}><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#2F7A5E"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>{t}</li>))}
+            </ul>
             <div className="buy">
               <p className="price" aria-label={`Prix ${priceLabel}`}>{priceLabel}<small>{product.condition}</small></p>
               <BuyButton label="Acheter maintenant" showPrice />
+              <a className="textlink" href="#fonctionnement">Voir comment ça marche</a>
               <p className="note">Paiement sécurisé finalisé sur eBay, via l&apos;annonce du produit.</p>
             </div>
           </div>
@@ -52,28 +55,27 @@ export default function Home() {
 
         <div className="marquee" aria-hidden="true"><div className="marquee-track">{[0, 1].map((k) => (<ul key={k}>{["Vapeur douce", "Recharge USB", "Réservoir intégré", "Poignée ergonomique", "Picots de massage", "Chiens et chats"].map((t) => (<li key={t}>{t}</li>))}</ul>))}</div></div>
 
-        <section className="band" aria-labelledby="h-benefits">
-          <div className="wrap">
-            <h2 data-reveal id="h-benefits">Ce que la vapeur change au toilettage</h2>
-            <ul className="benefits">
-              {benefits.map((b, i) => (<li data-reveal style={{ "--i": i } as React.CSSProperties} key={b.title}><h3>{b.title}</h3><p>{b.text}</p></li>))}
-            </ul>
-          </div>
+        <section className="wrap section" aria-label="Les points forts">
+          {features.map((f, i) => (
+            <article className={`row${i % 2 ? " flip" : ""}`} key={f.title}>
+              <Pic n={f.image} sizes="(max-width: 900px) 100vw, 50vw" />
+              <div data-reveal><h2>{f.title}</h2><p>{f.text}</p></div>
+            </article>
+          ))}
         </section>
+
+        {product.video && (
+          <section className="wrap section" aria-labelledby="h-video">
+            <h2 data-reveal id="h-video">La brosse en action</h2>
+            <video className="video" src={product.video} poster={product.images[1].src} controls muted loop playsInline preload="none" />
+          </section>
+        )}
 
         <section id="fonctionnement" className="wrap section" aria-labelledby="h-how">
           <h2 data-reveal id="h-how">Quatre gestes, aucune pile</h2>
           <ol className="steps">
             {steps.map((s, i) => (<li data-reveal style={{ "--i": i } as React.CSSProperties} key={s.title}><h3>{s.title}</h3><p>{s.text}</p></li>))}
           </ol>
-        </section>
-
-        <section className="wrap section" aria-labelledby="h-use">
-          <h2 data-reveal id="h-use">Pour les chiens, pour les chats</h2>
-          <div className="duo">
-            <Pic n={1} sizes="(max-width: 900px) 100vw, 50vw" /><Pic n={2} sizes="(max-width: 900px) 100vw, 50vw" />
-          </div>
-          <p className="lead narrow">Le même geste, sur tous les pelages : la poignée ergonomique garde la main détendue, les picots massent à chaque passage.</p>
         </section>
 
         <section id="details" className="band alt" aria-labelledby="h-spec">
@@ -102,18 +104,21 @@ export default function Home() {
           </ul>
         </section>
 
-        <section className="wrap section" aria-labelledby="h-trust">
-          <h2 data-reveal id="h-trust">Acheter en confiance</h2>
-          <ul className="trust">
-            <li data-reveal style={{ "--i": 0 } as React.CSSProperties}><h3>Produit neuf</h3><p>Une brosse neuve, une unité incluse.</p></li>
-            <li data-reveal style={{ "--i": 1 } as React.CSSProperties}><h3>Paiement sur eBay</h3><p>Vous réglez directement sur eBay, jamais sur ce site.</p></li>
-            <li data-reveal style={{ "--i": 2 } as React.CSSProperties}><h3>Garantie client eBay</h3><p>Remboursement possible si vous ne recevez pas l&apos;objet commandé, selon les conditions eBay.</p></li>
-          </ul>
-        </section>
-
         <section id="faq" className="wrap section faq" aria-labelledby="h-faq">
           <h2 data-reveal id="h-faq">Questions fréquentes</h2>
           {faqs.map((f) => (<details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>))}
+        </section>
+
+        <section className="wrap section" aria-labelledby="h-trust">
+          <h2 data-reveal id="h-trust">Acheter en confiance</h2>
+          <ul className="trust">
+            {trustItems.map((t, i) => (
+              <li data-reveal style={{ "--i": i } as React.CSSProperties} key={t.title}>
+                <svg className="ico" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.8"/><path d="M7.5 12.5l3 3L16.5 9" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <h3>{t.title}</h3><p>{t.text}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="final">
