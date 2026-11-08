@@ -6,6 +6,7 @@ export default function BuyButton({ label = "Acheter sur eBay", variant = "solid
   return (
     <a
       className={`btn btn-${variant}`}
+      title={`${label} : ${product.name} sur eBay`}
       href={product.ebayUrl}
       target="_blank"
       rel="noopener noreferrer"

@@ -16,7 +16,7 @@ export default function Gallery() {
         {product.images.map((img, n) => (
           <li key={img.src}>
             <button type="button" onClick={() => setI(n)} aria-label={`Voir la photo ${n + 1}`} aria-current={n === i}>
-              <Image src={img.src} alt="" width={96} height={96} unoptimized={img.src.endsWith(".svg")} />
+              <Image src={img.src} alt={`Miniature ${n + 1} : ${img.alt}`} width={96} height={96} unoptimized={img.src.endsWith(".svg")} />
             </button>
           </li>
         ))}

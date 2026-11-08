@@ -120,3 +120,8 @@ html[data-scrolled] .top{box-shadow:0 8px 30px -18px rgba(14,42,51,.45)}html[dat
 .trust{grid-template-columns:repeat(4,1fr)}.ico{color:var(--fern);margin-bottom:.6rem}
 @media (max-width:900px){.row{grid-template-columns:1fr;gap:1.5rem;margin-bottom:3rem}.row.flip .pic{order:0}.trust{grid-template-columns:1fr 1fr}.announce span:nth-child(3){display:none}}
 @media (max-width:520px){.trust{grid-template-columns:1fr}.announce span:nth-child(2){display:none}}
+
+/* ───────── SEO / contenu ───────── */
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 3.5rem}.guide-grid p{color:var(--muted)}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-bottom:.5rem}.foot-nav a{font-weight:600;color:var(--ink);text-underline-offset:4px}
+@media (max-width:900px){.guide-grid{grid-template-columns:1fr}}

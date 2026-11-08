@@ -2,9 +2,9 @@
  * Point unique de configuration : modifiez ici le nom, le prix, le lien eBay et les textes clés.
  */
 export const site = {
-  brand: "Brume",
+  brand: "Patte Douce",
   tagline: "Toilettage à la vapeur pour chiens et chats",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://brume-boutique.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pattedouce.vercel.app",
   locale: "fr_FR",
 };
 
@@ -85,9 +85,9 @@ export const heroPoints = [
 ];
 
 export const features = [
-  { title: "La vapeur adoucit chaque passage", text: "Une fine vapeur accompagne chaque passage de brosse. Elle aide aussi à réduire l'électricité statique du pelage pendant le brossage.", image: 1 },
-  { title: "Un réservoir, un câble USB, c'est tout", text: "Remplissez le réservoir d'eau intégré, rechargez la brosse en USB : aucune pile à acheter. La poignée ergonomique garde la main détendue.", image: 2 },
-  { title: "Les poils détachés restent sur la brosse", text: "Les picots aident à retirer les poils détachés et massent pendant le toilettage. Le système de nettoyage facilite le retrait des poils accumulés.", image: 0 },
+  { title: "La vapeur de la brosse adoucit chaque passage", text: "Une fine vapeur accompagne chaque passage de brosse. Elle aide aussi à réduire l'électricité statique du pelage pendant le brossage.", image: 1 },
+  { title: "Brosse rechargeable en USB, réservoir d'eau intégré", text: "Remplissez le réservoir d'eau intégré, rechargez la brosse en USB : aucune pile à acheter. La poignée ergonomique garde la main détendue.", image: 2 },
+  { title: "Brosse anti-poils : les poils détachés restent sur la brosse", text: "Les picots aident à retirer les poils détachés et massent pendant le toilettage. Le système de nettoyage facilite le retrait des poils accumulés.", image: 0 },
 ];
 
 export const trustItems = [
@@ -95,4 +95,11 @@ export const trustItems = [
   { title: "Paiement sécurisé sur eBay", text: "Vous réglez directement sur eBay, jamais sur ce site." },
   { title: "Garantie client eBay", text: "Remboursement possible si vous ne recevez pas l'objet commandé, selon les conditions eBay." },
   { title: "Livraison et retours", text: "Conditions affichées sur l'annonce eBay : lisez-les avant d'acheter." },
+];
+
+export const guide = [
+  { title: "Pourquoi brosser régulièrement", text: "Le brossage retire les poils morts avant qu'ils ne se déposent sur les meubles et les vêtements. Il permet aussi de repérer plus tôt un nœud ou une peau irritée, et c'est un moment calme à partager avec son animal." },
+  { title: "Choisir sa brosse de toilettage", text: "Selon la longueur du poil et la sensibilité de l'animal, une brosse à picots, un peigne, une brosse démêlante ou une brosse anti-poils conviennent mieux. Une brosse à vapeur ajoute un peu d'humidité qui aide à calmer l'électricité statique pendant le brossage." },
+  { title: "Habituer son animal à la vapeur", text: "Laissez d'abord votre chien ou votre chat renifler la brosse éteinte, puis brossez quelques secondes et récompensez-le. Allongez la durée petit à petit, sans insister si l'animal s'agite." },
+  { title: "Entretenir la brosse", text: "Retirez les poils accumulés après chaque séance grâce au système de nettoyage. Rechargez la brosse en USB quand c'est nécessaire et videz le réservoir si vous ne l'utilisez pas pendant un moment." },
 ];

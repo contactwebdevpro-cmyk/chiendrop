@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { site, product } from "@/config/site";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -8,7 +9,7 @@ const body = Figtree({ subsets: ["latin"], variable: "--font-body", display: "sw
 
 const title = `Brosse à vapeur chien et chat rechargeable USB | ${site.brand}`;
 const description =
-  "Brosse à vapeur pour chien et chat : réservoir d'eau intégré, recharge USB, poignée ergonomique. Aide à retirer les poils détachés et à limiter l'électricité statique.";
+  "Brosse à vapeur pour chien et chat : réservoir d'eau intégré, recharge USB, poignée ergonomique. Aide à retirer les poils détachés. Produit neuf.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -25,7 +26,7 @@ export const viewport: Viewport = { themeColor: "#0E2A33", width: "device-width"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${display.variable} ${body.variable}`}>
-      <body>{children}</body>
+      <body>{children}<Analytics /></body>
     </html>
   );
 }
