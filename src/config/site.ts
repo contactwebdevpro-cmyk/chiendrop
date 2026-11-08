@@ -106,3 +106,6 @@ export const guide = [
 
 /** Mentions légales : renseignez ce que vous voulez afficher (seuls les champs remplis apparaissent). */
 export const legal = { publisher: "", status: "", siret: "", address: "", email: "" };
+
+/** Profils sociaux (affichés dans le pied de page et dans les données structurées). Ex. : { name: "TikTok", url: "https://www.tiktok.com/@pattedouce" } */
+export const social: { name: string; url: string }[] = [];

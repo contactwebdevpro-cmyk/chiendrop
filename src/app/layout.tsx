@@ -7,7 +7,7 @@ import "./globals.css";
 const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Figtree({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
-const title = `Brosse à vapeur chien et chat rechargeable USB | ${site.brand}`;
+const title = `Brosse à vapeur chien et chat rechargeable | ${site.brand}`;
 const description =
   "Brosse à vapeur pour chien et chat : réservoir d'eau intégré, recharge USB, poignée ergonomique. Aide à retirer les poils détachés. Produit neuf.";
 

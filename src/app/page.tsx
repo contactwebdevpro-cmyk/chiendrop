@@ -1,9 +1,8 @@
-import { site, product, priceLabel, steps, specs, faqs, reviews, features, heroPoints, trustItems, guide } from "@/config/site";
+import { site, product, priceLabel, steps, specs, faqs, reviews, features, heroPoints, trustItems, guide, social } from "@/config/site";
 import BuyButton from "@/components/BuyButton";
 import Gallery from "@/components/Gallery";
 import Pic from "@/components/Pic";
 import Motion from "@/components/Motion";
-import Steam from "@/components/Steam";
 
 export default function Home() {
   const jsonLd = [
@@ -13,7 +12,7 @@ export default function Home() {
       brand: { "@type": "Brand", name: site.brand }, itemCondition: "https://schema.org/NewCondition",
       offers: { "@type": "Offer", url: product.ebayUrl, priceCurrency: product.currency, price: product.price.toFixed(2), availability: "https://schema.org/InStock", itemCondition: "https://schema.org/NewCondition" },
     },
-    { "@context": "https://schema.org", "@type": "Organization", name: site.brand, url: site.url, logo: new URL("/apple-icon.png", site.url).toString(), description: site.tagline },
+    { "@context": "https://schema.org", "@type": "Organization", name: site.brand, url: site.url, logo: new URL("/apple-icon.png", site.url).toString(), description: site.tagline, ...(social.length ? { sameAs: social.map((s) => s.url) } : {}) },
     { "@context": "https://schema.org", "@type": "WebSite", name: site.brand, url: site.url, inLanguage: "fr-FR" },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
@@ -39,7 +38,7 @@ export default function Home() {
         <section className="hero wrap">
           <div className="hero-copy">
             <p className="kicker">Des poils partout, un pelage qui s&apos;électrise, une brosse que l&apos;animal évite ?</p>
-            <h1>Brosse à vapeur chien et chat : les poils détachés restent sur la brosse.</h1>
+            <h1>Brosse à vapeur chien et chat : retirez les poils détachés</h1>
             <p className="lead">Brosse à vapeur rechargeable pour chien et chat, avec réservoir d&apos;eau intégré et poignée ergonomique.</p>
             <ul className="points">
               {heroPoints.map((t) => (<li key={t}><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#2F7A5E"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>{t}</li>))}
@@ -52,7 +51,6 @@ export default function Home() {
               <p className="note">Paiement finalisé sur eBay, via l&apos;annonce du produit.</p>
             </div>
           </div>
-          <Steam />
           <Gallery />
         </section>
 
@@ -147,6 +145,7 @@ export default function Home() {
           <a href="#faq" title="Questions fréquentes">FAQ</a>
           <a href={product.ebayUrl} target="_blank" rel="noopener noreferrer" title="Annonce eBay de la brosse à vapeur">Annonce eBay</a>
           <a href="/mentions-legales" title="Mentions légales du site">Mentions légales</a>
+          {social.map((s) => (<a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer me" title={`${site.brand} sur ${s.name}`}>{s.name}</a>))}
         </nav>
         <p><strong>{site.brand}</strong> : vitrine de présentation. La vente, le paiement et la livraison sont assurés via l&apos;annonce eBay.</p>
         <p>© {new Date().getFullYear()} {site.brand}</p>
