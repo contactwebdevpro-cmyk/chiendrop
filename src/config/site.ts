@@ -73,7 +73,7 @@ export const faqs = [
  */
 export const reviews = [
   { name: "a***w", date: "déc. 2025", rating: 5, text: "Comme pinceau ordinaire, il est tout simplement excellent ! Le chien reste calme et apprécie d'être brossé. Mon chien trouve la vapeur inhabituelle et s'effraie un peu, même si elle est douce." },
-  { name: "Acheteur AliExpress", date: "déc. 2025", rating: 5, text: "Une bonne surprise. J'ai un Akita américain et la brosse est vraiment utile. Une protection rigide pour les poils de la brosse faciliterait le rangement." },
+  { name: "Acheteur", date: "déc. 2025", rating: 5, text: "Une bonne surprise. J'ai un Akita américain et la brosse est vraiment utile. Une protection rigide pour les poils de la brosse faciliterait le rangement." },
   { name: "E***a", date: "avr. 2026", rating: 4, text: "C'est incroyable la façon dont il élimine les poils et la qualité de la fonction vapeur." },
   { name: "M***l", date: "janv. 2026", rating: 5, text: "C'est parfait pour un berger allemand. Excellent produit." },
 ];
@@ -103,3 +103,6 @@ export const guide = [
   { title: "Habituer son animal à la vapeur", text: "Laissez d'abord votre chien ou votre chat renifler la brosse éteinte, puis brossez quelques secondes et récompensez-le. Allongez la durée petit à petit, sans insister si l'animal s'agite." },
   { title: "Entretenir la brosse", text: "Retirez les poils accumulés après chaque séance grâce au système de nettoyage. Rechargez la brosse en USB quand c'est nécessaire et videz le réservoir si vous ne l'utilisez pas pendant un moment." },
 ];
+
+/** Mentions légales : renseignez ce que vous voulez afficher (seuls les champs remplis apparaissent). */
+export const legal = { publisher: "", status: "", siret: "", address: "", email: "" };

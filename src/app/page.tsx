@@ -48,7 +48,8 @@ export default function Home() {
               <p className="price" aria-label={`Prix ${priceLabel}`}>{priceLabel}<small>{product.condition}</small></p>
               <BuyButton label="Acheter maintenant" showPrice />
               <a className="textlink" href="#fonctionnement" title="Voir comment fonctionne la brosse à vapeur">Voir comment ça marche</a>
-              <p className="note">Paiement sécurisé finalisé sur eBay, via l&apos;annonce du produit.</p>
+              <ul className="badges" aria-label="Garanties"><li>Produit neuf</li><li>Paiement sécurisé sur eBay</li><li>Garantie client eBay</li></ul>
+              <p className="note">Paiement finalisé sur eBay, via l&apos;annonce du produit.</p>
             </div>
           </div>
           <Steam />
@@ -94,7 +95,7 @@ export default function Home() {
 
         <section id="avis" className="wrap section" aria-labelledby="h-rev">
           <h2 data-reveal id="h-rev">Ce que disent des acheteurs d&apos;une brosse similaire</h2>
-          <p className="note rev-src">Ces avis proviennent d&apos;acheteurs d&apos;un article similaire sur AliExpress. Ce ne sont pas des clients de cette boutique ni de notre annonce eBay.</p>
+          <p className="note rev-src">Ces avis proviennent d&apos;acheteurs d&apos;un article similaire vendu sur une autre plateforme. Ce ne sont pas des clients de cette boutique ni de notre annonce eBay.</p>
           <ul className="reviews">
             {reviews.map((r, i) => (
               <li data-reveal style={{ "--i": i } as React.CSSProperties} key={r.text}>
@@ -145,6 +146,7 @@ export default function Home() {
           <a href="#avis" title="Avis d'acheteurs d'une brosse similaire">Avis</a>
           <a href="#faq" title="Questions fréquentes">FAQ</a>
           <a href={product.ebayUrl} target="_blank" rel="noopener noreferrer" title="Annonce eBay de la brosse à vapeur">Annonce eBay</a>
+          <a href="/mentions-legales" title="Mentions légales du site">Mentions légales</a>
         </nav>
         <p><strong>{site.brand}</strong> : vitrine de présentation. La vente, le paiement et la livraison sont assurés via l&apos;annonce eBay.</p>
         <p>© {new Date().getFullYear()} {site.brand}</p>

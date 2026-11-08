@@ -23,7 +23,7 @@ ${specs.map(([k, v]) => `- ${k} : ${v}`).join("\n")}
 
 ## Précisions
 - Ce site ne vend pas en direct : le bouton d'achat renvoie vers l'annonce eBay.
-- Les avis affichés viennent d'acheteurs d'un article similaire sur AliExpress, pas de clients de la boutique.
+- Les avis affichés viennent d'acheteurs d'un article similaire vendu sur une autre plateforme, pas de clients de la boutique.
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }
