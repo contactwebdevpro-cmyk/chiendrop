@@ -1,8 +1,9 @@
-import { site, product, priceLabel, steps, specs, faqs, reviews, features, heroPoints, trustItems, guide, social } from "@/config/site";
+import { site, product, priceLabel, steps, specs, faqs, reviews, features, heroPoints, trustItems, guide, social, shop } from "@/config/site";
 import BuyButton from "@/components/BuyButton";
 import Gallery from "@/components/Gallery";
 import Pic from "@/components/Pic";
 import Motion from "@/components/Motion";
+import Checkout from "@/components/Checkout";
 
 export default function Home() {
   const jsonLd = [
@@ -10,7 +11,7 @@ export default function Home() {
       "@context": "https://schema.org", "@type": "Product", name: product.name, description: product.description,
       image: product.images.map((i) => new URL(i.src, site.url).toString()), sku: product.sku,
       brand: { "@type": "Brand", name: site.brand }, itemCondition: "https://schema.org/NewCondition",
-      offers: { "@type": "Offer", url: product.ebayUrl, priceCurrency: product.currency, price: product.price.toFixed(2), availability: "https://schema.org/InStock", itemCondition: "https://schema.org/NewCondition" },
+      offers: { "@type": "Offer", url: site.url, priceCurrency: product.currency, price: product.price.toFixed(2), availability: "https://schema.org/InStock", itemCondition: "https://schema.org/NewCondition" },
     },
     { "@context": "https://schema.org", "@type": "Organization", name: site.brand, url: site.url, logo: new URL("/apple-icon.png", site.url).toString(), description: site.tagline, ...(social.length ? { sameAs: social.map((s) => s.url) } : {}) },
     { "@context": "https://schema.org", "@type": "WebSite", name: site.brand, url: site.url, inLanguage: "fr-FR" },
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <>
       <a href="#contenu" className="skip" title="Aller au contenu principal">Aller au contenu</a>
-      <div className="announce"><span>Produit neuf</span><span>Paiement sécurisé sur eBay</span><span>Recharge USB</span></div>
+      <div className="announce"><span>Produit neuf</span><span>Paiement sécurisé PayPal</span><span>Livraison offerte</span></div>
       <header className="top">
         <div className="wrap top-in">
           <a href="#" className="logo" title="Retour en haut de la page" aria-label={`${site.brand}, accueil`}>
@@ -47,8 +48,8 @@ export default function Home() {
               <p className="price" aria-label={`Prix ${priceLabel}`}>{priceLabel}<small>{product.condition}</small></p>
               <BuyButton label="Acheter maintenant" showPrice />
               <a className="textlink" href="#fonctionnement" title="Voir comment fonctionne la brosse à vapeur">Voir comment ça marche</a>
-              <ul className="badges" aria-label="Garanties"><li>Produit neuf</li><li>Paiement sécurisé sur eBay</li><li>Garantie client eBay</li></ul>
-              <p className="note">Paiement finalisé sur eBay, via l&apos;annonce du produit.</p>
+              <ul className="badges" aria-label="Garanties"><li>Produit neuf</li><li>Paiement sécurisé PayPal</li><li>Livraison {shop.deliveryDelay}</li></ul>
+              <p className="note">Paiement par PayPal : compte PayPal ou carte bancaire.</p>
             </div>
           </div>
           <Gallery />
@@ -93,7 +94,7 @@ export default function Home() {
 
         <section id="avis" className="wrap section" aria-labelledby="h-rev">
           <h2 data-reveal id="h-rev">Ce que disent des acheteurs d&apos;une brosse similaire</h2>
-          <p className="note rev-src">Ces avis proviennent d&apos;acheteurs d&apos;un article similaire vendu sur une autre plateforme. Ce ne sont pas des clients de cette boutique ni de notre annonce eBay.</p>
+          <p className="note rev-src">Ces avis proviennent d&apos;acheteurs d&apos;un article similaire vendu sur une autre plateforme. Ce ne sont pas des clients de cette boutique.</p>
           <ul className="reviews">
             {reviews.map((r, i) => (
               <li data-reveal style={{ "--i": i } as React.CSSProperties} key={r.text}>
@@ -129,10 +130,15 @@ export default function Home() {
           </ul>
         </section>
 
+        <section id="commander" className="wrap section" aria-labelledby="h-order">
+          <h2 data-reveal id="h-order">Commander la brosse à vapeur</h2>
+          <Checkout />
+        </section>
+
         <section className="final">
           <div className="wrap final-in" data-reveal>
             <h2>Un pelage plus facile à brosser dès cette semaine.</h2>
-            <BuyButton label="Acheter sur eBay" variant="ghost" showPrice />
+            <BuyButton label="Acheter" variant="ghost" showPrice />
           </div>
         </section>
       </main>
@@ -143,11 +149,12 @@ export default function Home() {
           <a href="#details" title="Caractéristiques de la brosse">Caractéristiques</a>
           <a href="#avis" title="Avis d'acheteurs d'une brosse similaire">Avis</a>
           <a href="#faq" title="Questions fréquentes">FAQ</a>
-          <a href={product.ebayUrl} target="_blank" rel="noopener noreferrer" title="Annonce eBay de la brosse à vapeur">Annonce eBay</a>
+          <a href="/cgv" title="Conditions générales de vente">CGV</a>
+          <a href="/confidentialite" title="Politique de confidentialité">Confidentialité</a>
           <a href="/mentions-legales" title="Mentions légales du site">Mentions légales</a>
           {social.map((s) => (<a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer me" title={`${site.brand} sur ${s.name}`}>{s.name}</a>))}
         </nav>
-        <p><strong>{site.brand}</strong> : vitrine de présentation. La vente, le paiement et la livraison sont assurés via l&apos;annonce eBay.</p>
+        <p><strong>{site.brand}</strong> : boutique en ligne de brosses de toilettage pour chiens et chats. Paiement sécurisé par PayPal.</p>
         <p>© {new Date().getFullYear()} {site.brand}</p>
       </footer>
 

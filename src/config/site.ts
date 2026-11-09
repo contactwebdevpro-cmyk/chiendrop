@@ -1,5 +1,5 @@
 /**
- * Point unique de configuration : modifiez ici le nom, le prix, le lien eBay et les textes clés.
+ * Point unique de configuration : modifiez ici le nom, le prix, les frais de livraison, les mentions légales et les textes clés.
  */
 export const site = {
   brand: "Patte Douce",
@@ -8,14 +8,21 @@ export const site = {
   locale: "fr_FR",
 };
 
+/** Vente directe : à vérifier et ajuster avant la mise en ligne. */
+export const shop = {
+  shippingPrice: 0, // frais de port TTC par commande (0 = livraison offerte)
+  deliveryDelay: "5 à 10 jours ouvrés", // délai annoncé au client (à confirmer)
+  countries: [{ code: "FR", name: "France" }],
+  maxQuantity: 5,
+};
+
 export const product = {
   name: "Brosse à vapeur blanche pour chien et chat",
   shortName: "Brosse à vapeur",
-  price: 23.21, // ← à ajuster (annonce eBay consultée : 23,21 € dont frais de Protection acheteurs)
+  price: 23.21, // prix TTC unitaire (à ajuster)
   currency: "EUR",
-  ebayUrl: "https://www.ebay.fr/itm/860124886603",
   condition: "Neuf",
-  sku: "ebay-860124886603",
+  sku: "brosse-vapeur-blanche",
   // Vidéo de démonstration (optionnelle) : ajoutez public/videos/demo.mp4 puis mettez "/videos/demo.mp4"
   video: "" as string,
   description:
@@ -61,15 +68,15 @@ export const faqs = [
   { q: "Cette brosse convient-elle aux chiens et aux chats ?", a: "Oui, elle est conçue pour le toilettage des chiens et des chats." },
   { q: "Comment fonctionne la vapeur ?", a: "Vous remplissez le réservoir d'eau intégré, rechargez la brosse en USB, puis vous brossez : la vapeur accompagne le geste." },
   { q: "Comment nettoyer la brosse ?", a: "Un système facilite le retrait des poils accumulés après le brossage." },
-  { q: "Quelle est l'autonomie et le temps de charge ?", a: "Ces données ne sont pas précisées dans l'annonce. Posez la question au vendeur depuis la page eBay avant d'acheter." },
-  { q: "Où se fait le paiement ?", a: "Sur eBay. Ce site présente le produit : le bouton d'achat vous redirige vers l'annonce, où vous finalisez la commande et le paiement." },
-  { q: "Quelles sont les conditions de livraison et de retour ?", a: "Elles sont affichées sur l'annonce eBay et peuvent évoluer. Consultez-les avant de valider votre achat." },
+  { q: "Quelle est l'autonomie et le temps de charge ?", a: "Ces données ne sont pas précisées dans notre fiche produit. Si c'est important pour vous, écrivez-nous avant de commander (adresse dans les mentions légales)." },
+  { q: "Où se fait le paiement ?", a: "Directement sur ce site, avec PayPal (votre compte PayPal ou, selon les cas, votre carte bancaire). Nous ne voyons ni ne stockons vos données bancaires." },
+  { q: "Quelles sont les conditions de livraison et de retour ?", a: "Livraison en France sous 5 à 10 jours ouvrés. Vous disposez de 14 jours après réception pour vous rétracter : tout est détaillé dans les conditions générales de vente." },
   { q: "Mon animal risque-t-il d'avoir peur de la vapeur ?", a: "La vapeur est douce, mais certains animaux la trouvent inhabituelle au début, comme le note un acheteur d'une brosse similaire. Laissez-le renifler la brosse, commencez par quelques passages et récompensez-le." },
 ];
 
 /**
  * Avis d'acheteurs d'un ARTICLE SIMILAIRE (AliExpress), cités tels quels et présentés comme tels sur le site.
- * Quand vous aurez de vrais avis eBay sur votre annonce, remplacez ce tableau (et le texte de la section).
+ * Quand vous aurez de vrais avis de clients, remplacez ce tableau (et le texte de la section).
  */
 export const reviews = [
   { name: "a***w", date: "déc. 2025", rating: 5, text: "Comme pinceau ordinaire, il est tout simplement excellent ! Le chien reste calme et apprécie d'être brossé. Mon chien trouve la vapeur inhabituelle et s'effraie un peu, même si elle est douce." },
@@ -92,9 +99,9 @@ export const features = [
 
 export const trustItems = [
   { title: "Produit neuf", text: "Une brosse neuve, une unité incluse." },
-  { title: "Paiement sécurisé sur eBay", text: "Vous réglez directement sur eBay, jamais sur ce site." },
-  { title: "Garantie client eBay", text: "Remboursement possible si vous ne recevez pas l'objet commandé, selon les conditions eBay." },
-  { title: "Livraison et retours", text: "Conditions affichées sur l'annonce eBay : lisez-les avant d'acheter." },
+  { title: "Paiement sécurisé PayPal", text: "Vous payez avec PayPal : nous ne voyons ni ne stockons vos données bancaires." },
+  { title: "Protection des achats PayPal", text: "Selon les conditions de PayPal, vous pouvez être remboursé si l'article n'arrive pas ou ne correspond pas." },
+  { title: "Livraison et rétractation", text: "Livraison sous 5 à 10 jours ouvrés et 14 jours pour vous rétracter : voir les CGV." },
 ];
 
 export const guide = [
@@ -105,7 +112,16 @@ export const guide = [
 ];
 
 /** Mentions légales : renseignez ce que vous voulez afficher (seuls les champs remplis apparaissent). */
-export const legal = { publisher: "", status: "", siret: "", address: "", email: "" };
+export const legal = {
+  publisher: "", // Nom et prénom (ou raison sociale)
+  status: "", // ex. « Micro-entrepreneur »
+  siret: "",
+  address: "", // adresse de domiciliation
+  email: "", // e-mail de contact et de service client
+  vatNote: "", // ex. « TVA non applicable, article 293 B du CGI » (micro-entreprise en franchise)
+  mediator: "", // nom du médiateur de la consommation
+  mediatorUrl: "", // site du médiateur
+};
 
 /** Profils sociaux (affichés dans le pied de page et dans les données structurées). Ex. : { name: "TikTok", url: "https://www.tiktok.com/@pattedouce" } */
 export const social: { name: string; url: string }[] = [];

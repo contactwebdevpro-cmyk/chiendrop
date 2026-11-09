@@ -1,14 +1,15 @@
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://*.paypal.com https://*.paypalobjects.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://*.paypal.com https://*.paypalobjects.com",
   "font-src 'self' data:",
   "media-src 'self'",
-  "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+  "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://*.paypal.com https://*.paypalobjects.com",
+  "frame-src https://*.paypal.com",
   "object-src 'none'",
   "base-uri 'self'",
-  "form-action 'self'",
+  "form-action 'self' https://*.paypal.com",
   "frame-ancestors 'none'",
 ].join("; ");
 
